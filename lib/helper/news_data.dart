@@ -9,6 +9,7 @@ class News {
   News({
     required this.url_text,
   });
+
   Future<List<Article>> getNews() async {
     var url = Uri.parse(url_text);
 
@@ -16,7 +17,9 @@ class News {
     var jsonData = jsonDecode(response.body);
     if (jsonData['status'] == 'ok') {
       jsonData['articles'].forEach((element) {
-        if (element['urlToImage'] != null && element['description'] != null) {
+        if (element['urlToImage'] != null &&
+            element['description'] != null &&
+            element['content'] != null) {
           Article article = Article(
             author: element['author'],
             title: element['title'],
@@ -24,7 +27,7 @@ class News {
             content: element['content'],
             url: element['url'],
             imageUrl: element['urlToImage'],
-            publishedAt: element['publishedAt'],
+            publishedAt: DateTime.parse(element['publishedAt']),
           );
           news.add(article);
         }

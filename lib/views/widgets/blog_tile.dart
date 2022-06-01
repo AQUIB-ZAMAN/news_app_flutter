@@ -14,9 +14,13 @@ class BlogTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      // width: double.infinity,
+      padding: EdgeInsets.all(5),
       child: Column(
         children: [
-          Image.network(imageUrl),
+          Image.network(
+            imageUrl,
+          ),
           Text(title),
           Text(desc),
         ],
