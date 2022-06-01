@@ -26,7 +26,7 @@ class ScrollableCategory extends StatelessWidget {
     return Container(
       color: Colors.grey[350],
       padding: EdgeInsets.all(2),
-      margin: EdgeInsets.all(3),
+      margin: EdgeInsets.fromLTRB(0, 3, 0, 3),
       height: 80,
       child: ListView.builder(
         shrinkWrap: true,
