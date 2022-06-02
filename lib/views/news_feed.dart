@@ -12,22 +12,21 @@ class Newsfeed extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        // width: double.infinity,
-        child: ListView.builder(
-          shrinkWrap: true,
-          itemCount: news.length,
-          scrollDirection: Axis.vertical,
-          physics: BouncingScrollPhysics(),
-          itemBuilder: (BuildContext context, int index) {
-            return BlogTile(
-              imageUrl: news[index].imageUrl,
-              title: news[index].title,
-              desc: news[index].desc,
-            );
-          },
-        ),
+    return Container(
+      padding: EdgeInsets.all(5),
+      // width: double.infinity,
+      child: ListView.builder(
+        shrinkWrap: true,
+        itemCount: news.length,
+        physics: ClampingScrollPhysics(),
+        itemBuilder: (BuildContext context, int index) {
+          return BlogTile(
+            imageUrl: news[index].imageUrl,
+            title: news[index].title,
+            desc: news[index].desc,
+            url: news[index].url,
+          );
+        },
       ),
     );
   }

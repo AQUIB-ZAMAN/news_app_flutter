@@ -13,18 +13,17 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   List<Article> news = [];
   bool loading = true;
-
+  late String url;
   @override
   void initState() {
-    super.initState();
+    url =
+        'https://newsapi.org/v2/top-headlines?country=in&category=business&pageSize=80&apiKey=3a6e906bf9a140f4a1d0ef685c20da77';
     getNews();
+    super.initState();
   }
 
   getNews() async {
-    news = await News(
-            url_text:
-                'https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=3a6e906bf9a140f4a1d0ef685c20da77')
-        .getNews();
+    news = await News(url_text: url).getNews();
     setState(() {
       loading = false;
     });
@@ -40,11 +39,11 @@ class _HomeState extends State<Home> {
           children: [
             Text(
               'Flutter',
-              style: TextStyle(fontSize: 18, color: Colors.black),
+              style: TextStyle(fontSize: 21, color: Colors.black),
             ),
             Text(
               'News',
-              style: TextStyle(color: Colors.blue, fontSize: 18),
+              style: TextStyle(color: Colors.blue, fontSize: 21),
             )
           ],
           mainAxisAlignment: MainAxisAlignment.center,
@@ -54,16 +53,18 @@ class _HomeState extends State<Home> {
           ? Center(
               child: CircularProgressIndicator(),
             )
-          : Container(
-              child: Column(
-              children: [
-                ScrollableCategory(),
-                SizedBox(
-                  height: 5,
-                ),
-                Newsfeed(news: news),
-              ],
-            )),
+          : SingleChildScrollView(
+              child: Container(
+                  child: Column(
+                children: [
+                  ScrollableCategory(),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Newsfeed(news: news),
+                ],
+              )),
+            ),
     );
   }
 }

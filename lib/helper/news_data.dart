@@ -19,7 +19,8 @@ class News {
       jsonData['articles'].forEach((element) {
         if (element['urlToImage'] != null &&
             element['description'] != null &&
-            element['content'] != null) {
+            element['content'] != null &&
+            element['author'] != null) {
           Article article = Article(
             author: element['author'],
             title: element['title'],
