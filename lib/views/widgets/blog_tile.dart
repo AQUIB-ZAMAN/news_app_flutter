@@ -28,7 +28,7 @@ class BlogTile extends StatelessWidget {
         );
       },
       child: Container(
-        margin: EdgeInsets.only(bottom: 30),
+        margin: EdgeInsets.only(bottom: 50),
         // width: double.infinity,
         padding: EdgeInsets.symmetric(horizontal: 8),
         child: Column(

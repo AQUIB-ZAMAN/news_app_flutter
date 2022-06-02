@@ -16,12 +16,10 @@ class CategoryTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => CategoryNews(
-                      newsCategory: text.toLowerCase(),
-                    )));
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => CategoryNews(
+                  newsCategory: text.toLowerCase(),
+                )));
       },
       child: Container(
           margin: const EdgeInsets.all(4.0),
