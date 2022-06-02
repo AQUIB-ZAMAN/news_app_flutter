@@ -13,8 +13,7 @@ class CategoryNews extends StatefulWidget {
 
 class _CategoryNewsState extends State<CategoryNews> {
   var newslist;
-  var url =
-      'https://newsapi.org/v2/top-headlines?country=in&category=business&pageSize=80&apiKey=3a6e906bf9a140f4a1d0ef685c20da77';
+  var url;
   bool _loading = true;
 
   void initState() {

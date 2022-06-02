@@ -32,14 +32,15 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.black,
         elevation: 0,
         title: Row(
           children: [
             Text(
               'Flutter',
-              style: TextStyle(fontSize: 21, color: Colors.black),
+              style: TextStyle(fontSize: 21, color: Colors.white),
             ),
             Text(
               'News',
@@ -53,18 +54,17 @@ class _HomeState extends State<Home> {
           ? Center(
               child: CircularProgressIndicator(),
             )
-          : SingleChildScrollView(
-              child: Container(
-                  child: Column(
-                children: [
-                  ScrollableCategory(),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Newsfeed(news: news),
-                ],
-              )),
-            ),
+          : Container(
+              child: Column(
+              children: [
+                ScrollableCategory(),
+                SizedBox(
+                  height: 10,
+                ),
+                Expanded(
+                    child: SingleChildScrollView(child: Newsfeed(news: news))),
+              ],
+            )),
     );
   }
 }
